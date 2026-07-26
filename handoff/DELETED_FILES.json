@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "baseline": "Limitless AI v5",
+  "release": "Limitless AI v2 Final",
+  "generatedAt": "2026-07-26T17:32:09.545Z",
+  "paths": [
+    "scripts/create-website-archive.mjs"
+  ]
+}

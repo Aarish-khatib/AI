@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 3,
+  "product": "Limitless AI v2",
+  "release": "2.0.0",
+  "checkpoint": "final-verified-release",
+  "updatedAt": "2026-07-26T17:32:02Z",
+  "durableBaseline": "verified Session 2 checkpoint",
+  "sessionStatus": "post-finale-audit-repaired-and-source-release-gates-complete",
+  "sessions": {
+    "1": "complete and checkpointed",
+    "2": "complete and checkpointed",
+    "3": "complete in final source",
+    "4": "complete in final source",
+    "5Finale": "complete in final source"
+  },
+  "archive": {
+    "filename": "Limitless-AI-v2-Final-Verified-Release.zip",
+    "contentIntegrity": [
+      "handoff/checksums.sha256",
+      "release/FILE_MANIFEST.json",
+      "release/SHA256SUMS.txt"
+    ],
+    "archiveSha256": "reported with the sealed downloadable archive"
+  },
+  "validation": {
+    "platformContractTests": 31,
+    "artifactTests": 4,
+    "finaleTests": 17,
+    "companionSecurityTests": 10,
+    "renderedHtmlTests": 1,
+    "totalTests": 63,
+    "lint": "passed",
+    "typecheck": "passed",
+    "workerBuild": "passed",
+    "vercelBuild": "passed",
+    "finaleValidation": "passed",
+    "supabaseMigrationAndRlsValidation": "passed: 6 migrations, 23 owner-isolated public tables",
+    "nativeManifestAndWorkflowValidation": "passed",
+    "productionAudit": "0 known vulnerabilities",
+    "developmentAudit": "17 high findings in the development-only ESLint transitive chain; npm reports no compatible fix",
+    "finalBrowserQa": "environment-limited: the managed cloud browser rejected both local preview addresses with ERR_BLOCKED_BY_CLIENT before application code loaded",
+    "priorLiveQa": "Session 2 desktop editor flows passed before the later-session implementation; final behavior is additionally covered by 63 tests and both production builds",
+    "desktopCompile": "not run: Rust/Cargo is not installed in this environment; Tauri configuration and CI workflow validation passed",
+    "mobileCompile": "Capacitor configuration TypeScript passed locally; full Android/iOS compilation is CI-configured and requires platform SDK runners",
+    "database": "source and RLS contract validated only; no production credentials or approval were used"
+  },
+  "externalActionsNotPerformed": [
+    "production Supabase migrations or Edge Function deployment",
+    "Git remote push or pull request",
+    "Vercel or Sites deployment",
+    "OAuth or passkey rollout",
+    "paid provider generation",
+    "native signing, notarization, updater publication, or store submission",
+    "remote desktop activation"
+  ],
+  "remainingImplementationSessions": [],
+  "nextOwnerActions": [
+    "Verify the extracted archive.",
+    "Review and apply only outstanding additive Supabase migrations.",
+    "Configure public runtime variables and any user-paid BYOK providers.",
+    "Run the post-deployment smoke test on the existing production origin.",
+    "Sign and publish native builds only with owner-controlled credentials."
+  ]
+}

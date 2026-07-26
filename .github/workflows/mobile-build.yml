@@ -1,0 +1,61 @@
+name: Mobile test builds
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths: ["mobile/**", ".github/workflows/mobile-build.yml"]
+
+permissions:
+  contents: read
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.13.0
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - run: npm ci --ignore-scripts
+      - run: npm run build
+      - run: npm ci --ignore-scripts
+        working-directory: mobile
+      - run: npx tsc --noEmit --moduleResolution bundler --module esnext --target es2022 capacitor.config.ts
+        working-directory: mobile
+      - run: npx cap add android
+        working-directory: mobile
+      - run: npx cap sync android
+        working-directory: mobile
+      - run: ./gradlew assembleDebug
+        working-directory: mobile/android
+      - uses: actions/upload-artifact@v4
+        with:
+          name: limitless-ai-android-debug
+          path: mobile/android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+
+  ios:
+    runs-on: macos-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.13.0
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run build
+      - run: npm ci --ignore-scripts
+        working-directory: mobile
+      - run: npx cap add ios
+        working-directory: mobile
+      - run: npx cap sync ios
+        working-directory: mobile
+      - run: xcodebuild -workspace App/App.xcworkspace -scheme App -sdk iphonesimulator -configuration Debug CODE_SIGNING_ALLOWED=NO build
+        working-directory: mobile/ios

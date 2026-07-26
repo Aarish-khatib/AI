@@ -1,0 +1,3 @@
+# Checkpoint patches intentionally contain the whitespace of the source states
+# they reproduce. Do not treat patch payload lines as current-source whitespace.
+handoff/*.patch -whitespace

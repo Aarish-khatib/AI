@@ -1,0 +1,19 @@
+{
+  "name": "limitless-ai-mobile-companion",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "sync": "cap sync",
+    "android": "cap sync android",
+    "ios": "cap sync ios"
+  },
+  "dependencies": {
+    "@capacitor/android": "8.4.2",
+    "@capacitor/core": "8.4.2",
+    "@capacitor/ios": "8.4.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "8.4.2",
+    "typescript": "5.9.3"
+  }
+}
