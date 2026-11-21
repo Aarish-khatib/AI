@@ -4,6 +4,16 @@ Limitless AI v2 is a local-first AI and media workspace for chat, image and
 video generation, animation, layered image editing, timeline video editing,
 durable projects, and an optional local coding companion.
 
+## At a glance
+
+- **What it is:** A local-first workspace combining AI chat, creative media, editable artifacts, and optional desktop/mobile companions.
+- **Stack:** React, TypeScript, Next.js, Vite/Vinext, and optional Supabase integrations.
+- **Run locally:** Node.js 22.13+; see [Start locally](#start-locally).
+- **Verification:** The project defines type checks, contract tests, security checks, production builds, and release validation scripts; see [Validation](#validation).
+- **Current limitations:** Hosted AI features require external providers and credentials. Production setup, migrations, OAuth, and native signing remain user-managed operations.
+
+> The feature descriptions below summarize the repository's intended release scope. They are not a substitute for running the application and its validation suite.
+
 This final portable release contains the completed v2 platform foundation,
 Artifact Workspace, Build Studio, Intelligence Hub, professional Document & PDF
 Studio, Universal Provider Hub, and native security foundations. It
