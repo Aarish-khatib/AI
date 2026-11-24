@@ -1,0 +1,26 @@
+name: Check patched dependencies
+on:
+  push:
+    branches: [maintenance/resolve-release-dependencies]
+permissions:
+  contents: read
+jobs:
+  resolve:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.13.0
+      - run: |
+          npm pkg set dependencies.next=16.4.6 overrides.postcss=8.5.23 overrides.sharp=0.35.5
+          npm install --ignore-scripts --package-lock-only
+          npm audit fix --ignore-scripts --package-lock-only || true
+          npm ci --ignore-scripts
+      - name: Export candidate manifest changes
+        run: |
+          git diff -- package.json package-lock.json | gzip | base64 > "$RUNNER_TEMP/patch"
+          echo BEGIN-PATCH
+          cat "$RUNNER_TEMP/patch"
+          echo END-PATCH
+      - run: npm run release:validate
