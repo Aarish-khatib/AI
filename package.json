@@ -13,7 +13,7 @@
     "vercel-build": "next build",
     "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
     "typecheck": "bash scripts/sites-env.sh -- tsc --noEmit",
-    "test:contracts": "node --test tests/contracts.test.mjs",
+    "test:contracts": "node --test tests/contracts.test.mjs tests/workspace-scope-privacy.test.mjs",
     "test:artifacts": "node --import tsx --test tests/artifacts.test.ts",
     "test:finale": "node --import tsx --test tests/finale.test.ts",
     "test:security": "node --test companion/security.test.mjs",
